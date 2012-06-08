@@ -55,6 +55,7 @@ public class FluentAppender extends AppenderSkeleton {
 		messages.put("loggerName", event.getLoggerName());
 		messages.put("thread", event.getThreadName());
 		messages.put("message", event.getMessage().toString());
+		messages.put("msec", event.getTimeStamp() % 1000);
 		messages.put("throwableInfo", 
 			(event.getThrowableInformation() != null)?
 				StringUtils.join(event.getThrowableStrRep(), "\n") : "");
