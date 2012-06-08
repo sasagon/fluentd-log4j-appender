@@ -63,4 +63,35 @@ public class FluentAppender extends AppenderSkeleton {
 		fluentLogger.log(label, messages, event.getTimeStamp() / 1000);
 	}
 
+	public void setTag(String tag) {
+		this.tag = tag;
+	}
+
+	public void setHost(String host) {
+		this.host = host;
+	}
+
+	public void setPort(int port) {
+		this.port = port;
+	}
+
+	public void setLabel(String label) {
+		this.label = label;
+	}
+
+	public String getTag() {
+		return tag;
+	}
+
+	public String getHost() {
+		return host;
+	}
+
+	public int getPort() {
+		return port;
+	}
+
+	public String getLabel() {
+		return label;
+	}
 }
