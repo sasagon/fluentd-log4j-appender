@@ -6,6 +6,7 @@ import java.util.Map;
 
 import org.apache.log4j.AppenderSkeleton;
 import org.apache.log4j.spi.LoggingEvent;
+import org.apache.commons.lang.StringUtils;
 import org.fluentd.logger.FluentLogger;
 
 public class FluentAppender extends AppenderSkeleton {
@@ -54,6 +55,9 @@ public class FluentAppender extends AppenderSkeleton {
 		messages.put("loggerName", event.getLoggerName());
 		messages.put("thread", event.getThreadName());
 		messages.put("message", event.getMessage().toString());
+		messages.put("throwableInfo", 
+			(event.getThrowableInformation() != null)?
+				StringUtils.join(event.getThrowableStrRep(), "\n") : "");
 		
 		fluentLogger.log(label, messages, event.getTimeStamp() / 1000);
 	}
